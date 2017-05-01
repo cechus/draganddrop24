@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <style type="text/css">
+    	.btn{
+    		min-width:150px;
+    	}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <h1>Form <small>1.0</small> </h1>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="list-group">
+                    <div class="list-group-item">
+                        <button class="btn btn-info" id="label">Label <i class="fa fa-tag"></i></button>
+                    </div>
+                    <div class="list-group-item">
+                        <button class="btn btn-info" id="text">Input Text <i class="fa fa-text-width"></i></button>
+                    </div>
+                    <div class="list-group-item">
+                        <button class="btn btn-info" id="number">Input number <i class="fa fa-hashtag"></i> </button>
+                    </div>
+                    <div class="list-group-item">
+                        <button class="btn btn-info" id="password">Input password <i class="fa fa-asterisk"></i>  </button>
+                    </div>
+                    <div class="list-group-item">
+                        <button class="btn btn-info" id="select">Select <i class="fa fa-toggle-down"></i> </button>
+                    </div>
+                    <div class="list-group-item">
+                        <button class="btn btn-info" id="check">Checkbox <i class="fa fa-check-square-o"></i> </button>
+                    </div>
+                    <div class="list-group-item">
+                        <button class="btn btn-info" id="radio">Radio <i class="fa fa-dot-circle-o"></i> </button>
+                    </div>
+                    <div class="list-group-item">
+                        <button class="btn btn-info" id="button">button <i class="fa fa-save"></i> </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+            	<div class="panel panel-primary">
+            	  <div class="panel-heading">Formulario</div>
+            	  <div class="panel-body" id="form">
+            	  </div>
+            	</div>
+            	<div class="well">
+            		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi saepe voluptatum officia libero ipsum doloribus, nihil debitis fugit tenetur ipsam similique mollitia quis porro id laboriosam dolore adipisci reiciendis itaque.
+            	</div>
+            </div>
+        </div>
+    </div>
+    <script>
+    	$(document).ready(function() {
+    		function formGroup() {
+    			return $('<div/>').addClass('form-group');
+    		}
+    		var form=$('#form');
+    		$('#label').on('click', function(event) {
+    			var label=$('<label/>').text('label');
+    			form.append(label);
+    			event.preventDefault();
+    		});
+    		$('#text').on('click', function(event) {
+    			var div=formGroup();
+    			var input=$('<input/>').attr('type', 'text');
+    			div.append(input);
+    			form.append(div);
+    			event.preventDefault();
+    		});
+    		$('#number').on('click', function(event) {
+    			var div=formGroup();
+    			var input=$('<input/>').attr('type', 'number');
+    			div.append(input);
+    			form.append(div);
+    			event.preventDefault();
+    		});
+    		$('#password').on('click', function(event) {
+    			var div=formGroup();
+    			var input=$('<input/>').attr('type', 'password');
+    			div.append(input);
+    			form.append(div);
+    			event.preventDefault();
+    		});
+    		$('#select').on('click', function(event) {
+    			var div=formGroup();
+    			var select=$('<select/>');
+    			for (var i = 1; i <=3; i++) {
+    				select.append($('<option>').text('opcion'+i))
+    			}
+    			div.append(select);
+    			form.append(div);
+    			event.preventDefault();
+    		});
+    		$('#check').on('click', function(event) {
+    			var div=formGroup();
+    			var check=$('<input/>').attr('type','checkbox');
+    			div.append(check);
+    			form.append(div);
+    			event.preventDefault();
+    		});
+    		$('#radio').on('click', function(event) {
+    			var div=formGroup();
+    			var radio=$('<input/>').attr('type','radio');
+    			div.append(radio);
+    			form.append(div);
+    			event.preventDefault();
+    		});
+    		$('#button').on('click', function(event) {
+    			var div=formGroup();
+    			var button=$('<button/>').text('save');
+    			div.append(button);
+    			form.append(div);
+    			event.preventDefault();
+    		});
+    	});
+    </script>
+</body>
+
+</html>
