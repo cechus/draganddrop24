@@ -7,10 +7,14 @@
     <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.min.css">
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="bootstrap.min.js"></script>
     <style type="text/css">
-    	.btn{
+    	.btn-info {
     		min-width:150px;
     	}
+        .btn-warning{
+            margin-right: 5px;
+        }
     </style>
 </head>
 
@@ -22,9 +26,6 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="list-group">
-                    <div class="list-group-item">
-                        <button class="btn btn-info" id="label">Label <i class="fa fa-tag"></i></button>
-                    </div>
                     <div class="list-group-item">
                         <button class="btn btn-info" id="text">Input Text <i class="fa fa-text-width"></i></button>
                     </div>
@@ -51,76 +52,181 @@
             <div class="col-md-9">
             	<div class="panel panel-primary">
             	  <div class="panel-heading">Formulario</div>
-            	  <div class="panel-body" id="form">
+            	  <div class="panel-body">
+                  <form class="form-horizontal" id="form"></form>
             	  </div>
             	</div>
-
             </div>
         </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Editando</h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal">
+            <div class="form-group">
+                <label for="" class="col-md-2 control-label">Label:</label>
+                <div class="col-md-5">
+                    <input type="text" class="form-control" id="label">
+                </div>
+            </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">tipo</label>
+                    <div class="col-md-5">
+                        <select name="tipo" id="tipo" class="form-control">
+                            <option value="text">Texto</option>
+                            <option value="number">Numero</option>
+                            <option value="password">Contraseña</option>
+                            <option value="color">Color</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" data-dismiss="modal" class="btn btn-success">Save changes</button>
+          </div>
+        </div>
+      </div>
     </div>
     <script>
     	$(document).ready(function() {
     		function formGroup() {
-    			return $('<div/>').addClass('form-group');
+                /*var divD=$('<div>').addClass("dropdown col-md-offset-3");
+                var button=$('<button>').attr('data-toggle', 'dropdown').text('Opciones').append($('<span>').addClass("caret"));
+                var ul=$('<ul>').addClass("dropdown-menu");
+                var liE=$('<li>').append($('<a>').text('Editar'));
+                var liR=$('<li>').append($('<a>').text('Eliminar'));
+                ul.append(liE);
+                ul.append(liR);
+                divD.append(button);
+                divD.append(ul);*/
+                var div=$('<div/>').addClass('form-group well');
+                var button=$('<a>').addClass('btn btn-warning').text('Editar ').append($('<i>').addClass('fa fa-pencil')).attr('data-toggle', 'modal').attr('data-target', '#myModal');
+                div.append(button);
+                var button=$('<a>').addClass('btn btn-danger').text('Eliminar ').append( $('<i> ').addClass('fa fa-close'));
+                div.append(button);
+    			return div;
+
     		}
     		var form=$('#form');
-    		$('#label').on('click', function(event) {
-    			var label=$('<label/>').text('label');
-    			form.append(label);
-    			event.preventDefault();
-    		});
     		$('#text').on('click', function(event) {
     			var div=formGroup();
-    			var input=$('<input/>').attr('type', 'text');
-    			div.append(input);
-    			form.append(div);
+                var l=$('<label>').text("label:").addClass('col-sm-2 control-label');
+                var d=$('<div>').addClass("col-sm-5");
+    			var input=$('<input/>').attr('type', 'text').addClass('form-control');
+    			d.append(input);
+                div.append(l);
+                div.append(d);
+                form.append(div);
     			event.preventDefault();
     		});
     		$('#number').on('click', function(event) {
     			var div=formGroup();
-    			var input=$('<input/>').attr('type', 'number');
-    			div.append(input);
-    			form.append(div);
-    			event.preventDefault();
+                var l=$('<label>').text("label:").addClass('col-sm-2 control-label');
+                var d=$('<div>').addClass("col-sm-5");
+                var input=$('<input/>').attr('type', 'number').addClass('form-control');
+                d.append(input);
+                div.append(l);
+                div.append(d);
+                form.append(div);
+                event.preventDefault();
     		});
     		$('#password').on('click', function(event) {
     			var div=formGroup();
-    			var input=$('<input/>').attr('type', 'password');
-    			div.append(input);
-    			form.append(div);
-    			event.preventDefault();
+                var l=$('<label>').text("label:").addClass('col-sm-2 control-label');
+                var d=$('<div>').addClass("col-sm-5");
+                var input=$('<input/>').attr('type', 'password').addClass('form-control');
+                d.append(input);
+                div.append(l);
+                div.append(d);
+                form.append(div);
+                event.preventDefault();
     		});
     		$('#select').on('click', function(event) {
     			var div=formGroup();
-    			var select=$('<select/>');
-    			for (var i = 1; i <=3; i++) {
-    				select.append($('<option>').text('opcion'+i))
+                var l=$('<label>').text("label:").addClass('col-sm-2 control-label');
+                var d=$('<div>').addClass("col-sm-3");
+    			var select=$('<select/>').addClass('form-control');
+                for (var i = 1; i <=3; i++) {
+                    select.append($('<option>').text('opcion'+i))
     			}
-    			div.append(select);
+                d.append(select);
+                div.append(l);
+                div.append(d);
     			form.append(div);
     			event.preventDefault();
     		});
     		$('#check').on('click', function(event) {
-    			var div=formGroup();
-    			var check=$('<input/>').attr('type','checkbox');
-    			div.append(check);
-    			form.append(div);
-    			event.preventDefault();
+                var div=formGroup();
+                var label=$('<label>').text("label:").addClass('col-sm-2 control-label');
+                var divF=$('<div>').addClass("col-sm-5");
+                for (var i = 1; i <= 3; i++) {
+                    var divCheck=$('<div>').addClass("checkbox");
+                    var labelCheck=$('<label>');
+                    var check=$('<input/>').attr('type','checkbox');
+                    labelCheck.append(check);
+                    labelCheck.append("text");
+                    divCheck.append(labelCheck)
+                    divF.append(divCheck)
+                }
+                div.append(label);
+                div.append(divF);
+                form.append(div);
+                event.preventDefault();
     		});
     		$('#radio').on('click', function(event) {
-    			var div=formGroup();
-    			var radio=$('<input/>').attr('type','radio');
-    			div.append(radio);
-    			form.append(div);
-    			event.preventDefault();
+                var div=formGroup();
+                var label=$('<label>').text("label:").addClass('col-sm-2 control-label');
+                var divF=$('<div>').addClass("col-sm-5");
+                for (var i = 1; i <= 3; i++) {
+                    var divCheck=$('<div>').addClass("radio");
+                    var labelCheck=$('<label>');
+                    var check=$('<input/>').attr('type','radio').attr('name','radio');
+                    labelCheck.append(check);
+                    labelCheck.append("text");
+                    divCheck.append(labelCheck)
+                    divF.append(divCheck)
+                }
+                div.append(label);
+                div.append(divF);
+                form.append(div);
+                event.preventDefault();
     		});
     		$('#button').on('click', function(event) {
     			var div=formGroup();
-    			var button=$('<button/>').text('save');
-    			div.append(button);
+                var divF=$('<div>').addClass("col-sm-offset-3");
+    			var button=$('<button/>').text('save').addClass('btn btn-default');
+                divF.append(button);
+    			div.append(divF);
     			form.append(div);
     			event.preventDefault();
     		});
+            $(document).on('click', '.btn-warning', function(event) {
+                console.log($($(this).parent('.well')).children('label').text());
+                var self_label=$(this).parent().find('label');
+                var self_input=$(this).parent().find('input');
+                self_label=$($(this).parent('.well')).children('label');
+                $('.btn-success').on('click', function() {
+                    var l=$('#label').val();
+                    var i=$('#tipo').val();
+                    self_label.text(l+":");
+                    self_input.attr('type',i);
+                });
+
+
+            });
+            $(document).on('click', '.btn-danger', function(event) {
+                $(this).parent().remove();
+                event.preventDefault();
+            });
     	});
     </script>
 </body>
