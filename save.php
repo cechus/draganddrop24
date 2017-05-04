@@ -1,21 +1,15 @@
 <?php
-// $dbconn3 = pg_connect("host=localhost port=5432 dbname=academico user=postgres password=cechus");
-// 
-$conn = pg_pconnect("dbname=academico");
-if (!$conn) {
-  echo "An error occurred.\n";
-  exit;
-}
+$link = mysqli_connect("localhost", "root", "cechus", "alumno");
 
-$result = pg_query($conn, "SELECT author, email FROM authors");
-if (!$result) {
-  echo "An error occurred.\n";
-  exit;
+/* check connection */
+if (mysqli_connect_errno()) {
+    printf("Connect failed: %s\n", mysqli_connect_error());
+    exit();
 }
-
-while ($row = pg_fetch_row($result)) {
-  echo "Author: $row[0]  E-mail: $row[1]";
-  echo "<br />\n";
+$query = "INSERT into alumno values ('".$_POST['name']."','".$_POST['pat']."','".$_POST['mat']."','".$_POST['ci']."','".$_POST['sexo']."','".$_POST['facu']."','".$_POST['car']."','".$_POST['reguni']."')";
+if ($result = mysqli_query($link, $query)) {
+    /* free result set */
+    mysqli_free_result($result);
 }
- 
+header('location: list.php');
 ?>

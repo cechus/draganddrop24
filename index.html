@@ -78,7 +78,7 @@
             	<div class="panel panel-primary">
             	  <div class="panel-heading">Formulario</div>
             	  <div class="panel-body">
-                  <form class="form-horizontal" id="form"></form>
+                  <form class="form-horizontal" id="form" action="save.php" method="POST"></form>
             	  </div>
             	</div>
             </div>
@@ -148,6 +148,7 @@
                 var d=$('<div>').addClass("col-sm-5");
                 var input=$('<input/>').addClass('form-control').attr({
                     type: 'text',
+                    name: 'name',
                     placeholder: 'Nombre'
                 });
                 d.append(input);
@@ -162,6 +163,7 @@
                 var d=$('<div>').addClass("col-sm-5");
                 var input=$('<input/>').addClass('form-control').attr({
                     type: 'text',
+                    name: 'pat',
                     placeholder: 'Apellido paterno'
                 });
                 d.append(input);
@@ -176,6 +178,7 @@
                 var d=$('<div>').addClass("col-sm-5");
                 var input=$('<input/>').addClass('form-control').attr({
                     type: 'text',
+                    name: 'mat',
                     placeholder: 'Apellido materno'
                 });
                 d.append(input);
@@ -190,6 +193,7 @@
                 var d=$('<div>').addClass("col-sm-5");
                 var input=$('<input/>').addClass('form-control').attr({
                     type: 'text',
+                    name: 'ci',
                     placeholder: 'ci'
                 });
                 d.append(input);
@@ -202,7 +206,7 @@
                 var div=formGroup();
                 var l=$('<label>').text("Sexo:").addClass('col-sm-2 control-label');
                 var d=$('<div>').addClass("col-sm-3");
-                var select=$('<select/>').addClass('form-control');
+                var select=$('<select/>').attr('name','sexo').addClass('form-control');
                 select.append($('<option>').text('Masculino'));
                 select.append($('<option>').text('Femenino'));
                 d.append(select);
@@ -217,6 +221,7 @@
                 var d=$('<div>').addClass("col-sm-5");
                 var input=$('<input/>').addClass('form-control').attr({
                     type: 'number',
+                    name: 'reguni',
                     placeholder: 'registro'
                 });
                 d.append(input);
@@ -229,7 +234,7 @@
                 var div=formGroup();
                 var l=$('<label>').text("Facultad:").addClass('col-sm-2 control-label');
                 var d=$('<div>').addClass("col-sm-3");
-                var select=$('<select/>').addClass('form-control');
+                var select=$('<select/>').attr('name','facu').addClass('form-control');
                 select.append($('<option>').text('Ciencias Puras y Naturales'));
                 select.append($('<option>').text('Medicina'));
                 select.append($('<option>').text('Tecnica'));
@@ -244,7 +249,7 @@
                 var div=formGroup();
                 var l=$('<label>').text("Carrera:").addClass('col-sm-2 control-label');
                 var d=$('<div>').addClass("col-sm-3");
-                var select=$('<select/>').addClass('form-control');
+                var select=$('<select/>').attr('name','car').addClass('form-control');
                 select.append($('<option>').text('Informatica'));
                 select.append($('<option>').text('Estadistica'));
                 select.append($('<option>').text('Fisica'));
