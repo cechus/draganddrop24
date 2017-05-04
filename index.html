@@ -10,7 +10,8 @@
     <script type="text/javascript" src="bootstrap.min.js"></script>
     <style type="text/css">
     	.btn-info {
-    		min-width:150px;
+    		min-width:180px;
+            font-weight: bold;
     	}
         .btn-warning{
             margin-right: 5px;
@@ -27,9 +28,33 @@
             <div class="col-md-3">
                 <div class="list-group">
                     <div class="list-group-item">
-                        <button class="btn btn-info" id="text">Input Text <i class="fa fa-text-width"></i></button>
+                        <button class="btn btn-info" id="nombre">Nombre</button>
                     </div>
                     <div class="list-group-item">
+                        <button class="btn btn-info" id="pat">Ap. Paterno</button>
+                    </div>
+                    <div class="list-group-item">
+                        <button class="btn btn-info" id="mat">Ap. Materno</button>
+                    </div>
+                    <div class="list-group-item">
+                        <button class="btn btn-info" id="ci">CI</button>
+                    </div>
+                    <div class="list-group-item">
+                        <button class="btn btn-info" id="sexo">Sexo</button>
+                    </div>
+                    <div class="list-group-item">
+                        <button class="btn btn-info" id="facu">Facultad</button>
+                    </div>
+                    <div class="list-group-item">
+                        <button class="btn btn-info" id="car">Carrera</button>
+                    </div>
+                    <div class="list-group-item">
+                        <button class="btn btn-info" id="reguni">Registro Universitario</button>
+                    </div>
+                    <div class="list-group-item">
+                        <button class="btn btn-info" id="button">button <i class="fa fa-save"></i> </button>
+                    </div>
+                    <!-- <div class="list-group-item">
                         <button class="btn btn-info" id="number">Input number <i class="fa fa-hashtag"></i> </button>
                     </div>
                     <div class="list-group-item">
@@ -46,7 +71,7 @@
                     </div>
                     <div class="list-group-item">
                         <button class="btn btn-info" id="button">button <i class="fa fa-save"></i> </button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="col-md-9">
@@ -109,14 +134,140 @@
                 divD.append(button);
                 divD.append(ul);*/
                 var div=$('<div/>').addClass('form-group well');
-                var button=$('<a>').addClass('btn btn-warning').text('Editar ').append($('<i>').addClass('fa fa-pencil')).attr('data-toggle', 'modal').attr('data-target', '#myModal');
-                div.append(button);
+                /*var button=$('<a>').addClass('btn btn-warning').text('Editar ').append($('<i>').addClass('fa fa-pencil')).attr('data-toggle', 'modal').attr('data-target', '#myModal');
+                div.append(button);*/
                 var button=$('<a>').addClass('btn btn-danger').text('Eliminar ').append( $('<i> ').addClass('fa fa-close'));
                 div.append(button);
     			return div;
 
     		}
     		var form=$('#form');
+            $('#nombre').on('click',function(event) {
+                var div=formGroup();
+                var l=$('<label>').text("Nombre:").addClass('col-sm-2 control-label');
+                var d=$('<div>').addClass("col-sm-5");
+                var input=$('<input/>').addClass('form-control').attr({
+                    type: 'text',
+                    placeholder: 'Nombre'
+                });
+                d.append(input);
+                div.append(l);
+                div.append(d);
+                form.append(div);
+                event.preventDefault();
+            });
+            $('#pat').on('click',function(event) {
+                var div=formGroup();
+                var l=$('<label>').text("Apellido Paterno:").addClass('col-sm-2 control-label');
+                var d=$('<div>').addClass("col-sm-5");
+                var input=$('<input/>').addClass('form-control').attr({
+                    type: 'text',
+                    placeholder: 'Apellido paterno'
+                });
+                d.append(input);
+                div.append(l);
+                div.append(d);
+                form.append(div);
+                event.preventDefault();
+            });
+            $('#mat').on('click',function(event) {
+                var div=formGroup();
+                var l=$('<label>').text("Apellido Materno:").addClass('col-sm-2 control-label');
+                var d=$('<div>').addClass("col-sm-5");
+                var input=$('<input/>').addClass('form-control').attr({
+                    type: 'text',
+                    placeholder: 'Apellido materno'
+                });
+                d.append(input);
+                div.append(l);
+                div.append(d);
+                form.append(div);
+                event.preventDefault();
+            });
+            $('#ci').on('click',function(event) {
+                var div=formGroup();
+                var l=$('<label>').text("CI:").addClass('col-sm-2 control-label');
+                var d=$('<div>').addClass("col-sm-5");
+                var input=$('<input/>').addClass('form-control').attr({
+                    type: 'text',
+                    placeholder: 'ci'
+                });
+                d.append(input);
+                div.append(l);
+                div.append(d);
+                form.append(div);
+                event.preventDefault();
+            });
+            $('#sexo').on('click',function (event) {
+                var div=formGroup();
+                var l=$('<label>').text("Sexo:").addClass('col-sm-2 control-label');
+                var d=$('<div>').addClass("col-sm-3");
+                var select=$('<select/>').addClass('form-control');
+                select.append($('<option>').text('Masculino'));
+                select.append($('<option>').text('Femenino'));
+                d.append(select);
+                div.append(l);
+                div.append(d);
+                form.append(div);
+                event.preventDefault();
+            });
+            $('#reguni').on('click',function(event) {
+                var div=formGroup();
+                var l=$('<label>').text("Registro Universitario:").addClass('col-sm-2 control-label');
+                var d=$('<div>').addClass("col-sm-5");
+                var input=$('<input/>').addClass('form-control').attr({
+                    type: 'number',
+                    placeholder: 'registro'
+                });
+                d.append(input);
+                div.append(l);
+                div.append(d);
+                form.append(div);
+                event.preventDefault();
+            });
+            $('#facu').on('click',function (event) {
+                var div=formGroup();
+                var l=$('<label>').text("Facultad:").addClass('col-sm-2 control-label');
+                var d=$('<div>').addClass("col-sm-3");
+                var select=$('<select/>').addClass('form-control');
+                select.append($('<option>').text('Ciencias Puras y Naturales'));
+                select.append($('<option>').text('Medicina'));
+                select.append($('<option>').text('Tecnica'));
+                select.append($('<option>').text('Ingenieria'));
+                d.append(select);
+                div.append(l);
+                div.append(d);
+                form.append(div);
+                event.preventDefault();
+            });
+            $('#car').on('click',function (event) {
+                var div=formGroup();
+                var l=$('<label>').text("Carrera:").addClass('col-sm-2 control-label');
+                var d=$('<div>').addClass("col-sm-3");
+                var select=$('<select/>').addClass('form-control');
+                select.append($('<option>').text('Informatica'));
+                select.append($('<option>').text('Estadistica'));
+                select.append($('<option>').text('Fisica'));
+                select.append($('<option>').text('Quimica'));
+                select.append($('<option>').text('Biologia'));
+                d.append(select);
+                div.append(l);
+                div.append(d);
+                form.append(div);
+                event.preventDefault();
+            });
+            $('#button').on('click', function(event) {
+                var div=formGroup();
+                var divF=$('<div>').addClass("col-sm-offset-3");
+                var button=$('<button/>').text('save').addClass('btn btn-default').attr('type','submit');
+                divF.append(button);
+                div.append(divF);
+                form.append(div);
+                event.preventDefault();
+            });
+
+
+/*
     		$('#text').on('click', function(event) {
     			var div=formGroup();
                 var l=$('<label>').text("label:").addClass('col-sm-2 control-label');
@@ -199,16 +350,8 @@
                 div.append(divF);
                 form.append(div);
                 event.preventDefault();
-    		});
-    		$('#button').on('click', function(event) {
-    			var div=formGroup();
-                var divF=$('<div>').addClass("col-sm-offset-3");
-    			var button=$('<button/>').text('save').addClass('btn btn-default');
-                divF.append(button);
-    			div.append(divF);
-    			form.append(div);
-    			event.preventDefault();
-    		});
+    		});*/
+    		
             $(document).on('click', '.btn-warning', function(event) {
                 console.log($($(this).parent('.well')).children('label').text());
                 var self_label=$(this).parent().find('label');
